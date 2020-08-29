@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home Page{% endblock %}
+
+
+{% block content %}
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+
+  <h1>My First Social Media HomePage</h1>
+  <p>Stay connect with awesome people with Social Distancing! <span class='fas fa-handshake-slash mx-2' style='font-size:34px; color:red;'></span></p>
+  {% if user.is_authenticated%}
+    <h4 style="color:red;">Hii Welcome Back</h4>
+    {% else %}
+    <h3 style="color:red;">Usr is not authenticated Please <a href="{% url 'login'%}">login</a> <i>for better View</i></h3>
+    {% endif %}
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+
+        {% for profile in myprofile %}
+      <h2>About Me</h2>
+      <img src="/media/{{MEDIA_URL}}{{profile.pic}}" class="img-fluid rounded-circle shadow p-3 mb-5 bg-white rounded" style="width: 250px; height: 220px;"  alt="Cinque Terre">
+      <p style="text-align: justify;"><i>I am the type of person who will have an answer for everything. There is nothing that makes giving up acceptable, no matter how low you may feel. I can be trusted with secrets and can provide you with any notable reference to compare to your situation. This will make you feel better about what's happening; it always helps me.</i></p>
+
+    </div>
+    <div class="col-sm-8">
+      <h2>{{profile.name}}</h2>
+      <p>Age: <b>{{profile.age}}</b></p>
+      <p>Gender: <b>{{profile.gender}}</b>  Status: <b>{{profile.status}}</b></p>
+      <p style="text-align:justify;">Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+<!--      <br>-->
+       {% endfor %}
+{% if user.is_authenticated %}
+ <div class="row p-3">
+  <div class="col-sm-3">
+    <img src="{% static 'pic/bird.jpg'%}" alt="Snow" class="shadow p-1 mb-1 bg-dark " style="width: 150px; height: 150px;">
+    <img src="{% static 'pic/camera.jpg'%}" alt="Forest" class="shadow p-1 mb-1 bg-dark" style="width: 150px; height: 150px;">
+  </div>
+
+    <div class="col-sm-3">
+        <img src="{% static 'pic/flower.jpg'%}" alt="Snow" class="shadow p-1 mb-1 bg-dark" style="width: 150px; height: 150px;">
+        <img src="{% static 'pic/technology.jpg'%}" alt="Forest" class="shadow p-1 mb-1 bg-dark " style="width: 150px; height: 150px;">
+    </div>
+
+     <div class="col-sm-3" >
+        <img src="{% static 'pic/twitter.jpg'%}" alt="Snow" class="shadow p-1 mb-1 bg-dark" style="width: 150px; height: 150px;">
+        <img src="{% static 'pic/socialmedia.jpg'%}" alt="Forest" class="shadow p-1 mb-1 bg-dark" style="width: 150px; height: 150px;">
+    </div>
+
+     <div class="col-sm-3" >
+        <img src="{% static 'pic/covid-19.jpg'%}" alt="Snow" class="shadow p-1 mb-1 bg-dark" style="width: 150px; height: 150px;">
+        <img src="{% static 'pic/crab.jpg'%}" alt="Forest" class="shadow p-1 mb-1 bg-dark" style="width: 150px; height: 150px;">
+    </div>
+
+
+    </div>
+{% endif %}
+  </div>
+
+</div>
+  </div>
+
+<!--<div class="jumbotron text-center" style="margin-bottom:0">-->
+<!--  <p>Footer</p>-->
+<!--</div>-->
+
+{% endblock %}

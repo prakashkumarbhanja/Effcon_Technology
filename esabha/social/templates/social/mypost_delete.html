@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}MyPost Detail{% endblock %}
+{% block content %}
+
+<p>Are you sure you want to delete "{{ obj }}"?</p>
+<form method="post" action="{% url 'mypostdelete' obj.id%}">{% csrf_token %}
+    {%csrf_token%}
+    <a class="button button-blue" href="{%url 'mypostlist'%}">Cancel</a>
+    <input type="submit" name="Yes">
+</form>
+
+{% endblock %}

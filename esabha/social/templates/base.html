@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}E-Sabha{% endblock %}</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <!-- Icon Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+  <!--ALways put your external css file down to the Bootstrap link {important VVVV important}-->
+<!--    {% block css %}<link rel="stylesheet" href="{% static 'css/style.css' %}">{% endblock %}-->
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand btn btn-outline-success my-2 my-sm-0" href="{% url 'home' %}" style="font-family: 'Times New Roman'; font-size: 20px;">E-Sabha</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link fa fa-home" href="{% url 'home' %}" style="font-size:20px">Home <span class="sr-only">(current)</span></a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="{% url 'about' %}">About <span class="sr-only">(current)</span></a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="{% url 'contactus'%}">Contact<span class="sr-only">(current)</span></a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mypostlist' %}">My Post List<span class="sr-only">(current)</span></a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="{% url 'myprofile' %}">Profile's <span class="sr-only">(current)</span></a>
+      </li>
+        {% if user.is_authenticated %}
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'myprofileupdate' user.pk %}">Edit Profile <span class="sr-only">(current)</span></a>
+            </li>
+		{% endif %}
+         <li class="nav-item active">
+        <a class="nav-link" href="{% url 'FollowedPost' %}">Followed Post's <span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+
+    <ul class="navbar-nav pull-right">
+
+      {%if user.is_authenticated %}
+      <li class="nav-item active">
+          <a class="btn btn-primary mx-1" class="nav-link" href="{% url 'logout' %}">Logout <span class="sr-only">(current)</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+          <a class="btn btn-primary mx-1" class="nav-link" href="{% url 'login' %}">LogIn <span class="sr-only">(current)</span></a>
+      </li>
+
+        <li class="nav-item active">
+          <a class="btn btn-primary mx-1" class="nav-link" href="{% url 'create_user' %}">CreateUser <span class="sr-only">(current)</span></a>
+      </li>
+      {% endif %}
+
+      {% if user.is_superuser%}
+      <li class="nav-item active">
+          <a class="btn btn-primary" class="nav-link" href="/admin">Admin <span class="sr-only">(current)</span></a>
+        </li>
+
+      {% endif %}
+   </ul>
+
+  </div>
+</nav>
+
+{% block content %}
+
+{% endblock %}
+
+
+</body>
+</html>

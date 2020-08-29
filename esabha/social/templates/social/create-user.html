@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Create User{% endblock %}
+{% block content %}
+
+<main class="p-5">
+<div class="row">
+	<div class="col-sm-6 offset-sm-3">
+	<h1 class="myhead2">Create User</h1>
+		<hr>
+		<form enctype="multipart/form-data" method="POST">
+		{% csrf_token %}
+		{{form | crispy}}
+		<input class="btn btn-dark my-3" type="submit" />
+		</form>
+
+	</div>
+</div>
+</main>
+{% endblock %}

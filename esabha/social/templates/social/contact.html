@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Contactus{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-6">
+<h4 class="mx-5">Contact Us</h4>
+
+  <form action="#" method="POST">{% csrf_token %}
+    <div class="form-group mx-5">
+      <label for="un">Name:</label>
+      <input type="text" class="form-control" id="un" placeholder="Name" name="username">
+    </div>
+
+    <div class="form-group mx-5">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+
+    <div class="form-group mx-5">
+      <label for="phone_no">Phone No:</label>
+      <input type="text" class="form-control" id="phone_no" placeholder="Phone No" name="phone_no">
+    </div>
+
+    <div class="form-group mx-5">
+      <label for="msg">Phone No:</label>
+      <input type="text" class="form-control" id="msg" placeholder="Msg" name="msg">
+    </div>
+
+    <button type="submit" class="btn btn-primary mx-5">Submit</button>
+  </form>
+
+    </div>
+
+    <div class="col-sm-5">
+<h5 class="mx-4"><strong>Address</strong></h5>
+        <p>
+            <strong><span class="fa fa-map-marker mx-3 my-2"></span></strong>National Corporate Park, 117, Great Eastern Rd, Geeta Nagar, Choubey Colony, Samta Colony, Raipur, Chhattisgarh 492001<br>
+            <strong><span class="fa fa-phone mx-3 my-3"></span></strong>9778481xxx<br>
+            <strong><span class="fa fa-fax mx-3 my-3"></span></strong>7381655xxx<br>
+            <strong><span class="fa fa-globe mx-3 my-3"></span></strong>https://effcon.com<br>
+<!--            <strong><span class="fa fa-youtube mx-3 my-3"></span></strong><br>-->
+        </p>
+    </div>
+
+</div>
+
+<div class="row my-3 ">
+    <div class="col-md-10 offset-md-1">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item my-10 mx-2" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14874.742904550822!2d81.6111144!3d21.2443074!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9ed6532a6f04f63c!2sEffCon%20Technologies!5e0!3m2!1sen!2sin!4v1587491481501!5m2!1sen!2sin"></iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

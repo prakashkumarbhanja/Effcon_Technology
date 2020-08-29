@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Followed Post's{% endblock %}
+{% block content %}
+
+<div class="p-5">
+    <h1 class="myhead2">Followed Post's</h1>
+<hr>
+
+<div class="row p-5">
+{% for n1 in mypost_list %}
+	<div class="col-sm-3 p-1">
+<div class="card h-100">
+    <img class="card-img-top p-3" src="/media/{{n1.pic}}" alt="" style="width:60%; height:40%;">
+    <div class="card-body">
+        <h4 class="card-title">{{n1.subject}}</h4>
+        <p class="card-text">{{n1.cr_date | date:"d/m/y"}} - {{n1.uploaded_by}}
+        {% if n1.uploaded_by.pic %}
+		<img style="width: 50px; height: 50px;" class="img-fluid rounded-circle" src="/media/{{n1.uploaded_by.pic}}" />
+		{% endif %}
+		</p>
+		     {% if n1.liked %}
+            <a class="btn btn-danger btn-sm" href="{% url 'postdislike' n1.id %}"><span class="fa fa-thumbs-down"></span></a>
+            {% else %}
+            <a class="btn btn-success btn-sm" href="{% url 'postlike' n1.id %}"><span class="fa fa-thumbs-up"></span></a>
+            {% endif %}
+		<a class="btn btn-dark btn-sm" href="#">Read More</a>
+            {% if user.is_superuser %}
+            <a class="btn btn-danger btn-sm" href="#"><span class="fa fa-trash"></span></a>
+            {% endif %}
+            <span class="badge badge-info">Likes {{n1.likedno}}</span>
+        </div>
+</div>
+
+	</div>
+{% endfor %}
+</div>
+
+{% endblock %}
