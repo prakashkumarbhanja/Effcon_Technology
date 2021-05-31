@@ -151,7 +151,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'pkbhanja07@gmail.com' # for the separate email id we need to \
                                          # activate "gmail allow less secure" then go to this\
                                          # link "gmail allow less secure apps"
-EMAIL_HOST_PASSWORD = '9778481904'
+EMAIL_HOST_PASSWORD = '******'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
